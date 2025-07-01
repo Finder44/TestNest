@@ -11,8 +11,8 @@ export class RolesGuard implements CanActivate {
 
     public async canActivate(context: ExecutionContext,): Promise<boolean> {
         const roles = this.reflector.getAllAndOverride<UserRole[]>(ROLES_KEY, [
-            context.getHandler(),//получуние метаданных о метода контроллера
-            context.getClass()//получение метаданных из класса контроллера
+            context.getHandler(),
+            context.getClass()
         ]);
 
         const request = context.switchToHttp().getRequest();
@@ -21,7 +21,7 @@ export class RolesGuard implements CanActivate {
             return true
         }
 
-        if (!roles.includes(request.user.role)) {//нет роли пользователя
+        if (!roles.includes(request.user.role)) {
             throw new ForbiddenException('Недостаточно прав. У вас нет прав для доступа к этому ресурчу')
         }
 

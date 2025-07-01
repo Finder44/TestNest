@@ -1,4 +1,3 @@
-//люъединение функциональности 2х гвардов
 import {UserRole} from "@/entities/enums";
 import {applyDecorators, UseGuards} from "@nestjs/common";
 import {Roles} from "@/auth/decorators/roles.decorator";

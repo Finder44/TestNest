@@ -60,7 +60,7 @@ export class AuthController {
       return res.redirect(`${this.configService.getOrThrow<string>('APPLICATION_ORIGIN')}/dashboard/settings`)
 
     }
-//метод для колбека
+
     @UseGuards(AuthProviderGuard)
     @Get('/oauth/connect/:provider')
     public async connect(@Param('provider') provider: string) {

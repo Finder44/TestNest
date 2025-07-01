@@ -8,8 +8,7 @@ import {
     JoinColumn,
 } from 'typeorm';
 
-import { User } from './User'; // или '@/entities/User' если используешь alias
-
+import { User } from './User';
 
 @Entity({ name: 'accounts' })
 export class Account {

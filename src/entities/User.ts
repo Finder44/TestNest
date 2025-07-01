@@ -8,7 +8,7 @@ import {
 } from 'typeorm';
 import { Post } from './Post';
 import { Account } from './Account';
-import { UserRole, AuthMethod } from './enums'; //  enum'ы в отдельном файле
+import { UserRole, AuthMethod } from './enums';
 import {Comment} from "@/entities/Coment";
 
 

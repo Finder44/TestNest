@@ -28,7 +28,7 @@ import {CommentModule} from "@/coments/comment.module";
                 type: 'postgres',
                 url: configService.get<string>('POSTGRES_URI'),
                 entities: [User, Account, Token,Post, Comment],
-                synchronize: true,  // для dev можно, в продакшн лучше миграции
+                synchronize: true,
                 logging: IS_DEV_ENV,
             }),
         }),
@@ -39,8 +39,8 @@ import {CommentModule} from "@/coments/comment.module";
         CommentModule,
     ],
 
-    controllers: [], // сюда добавляй контроллеры
-    providers: [],   // сюда сервисы
+    controllers: [],
+    providers: [],
 })
 export class AppModule {
 }

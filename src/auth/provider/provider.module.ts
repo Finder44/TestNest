@@ -28,4 +28,3 @@ export class ProviderModule {
     }
   }
 }
-//регистрация и настройка сервисов оауф

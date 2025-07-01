@@ -11,7 +11,7 @@ export class BaseOAuthService {
     public constructor(private readonly options: TypeBaseProviderOptions) {
     }
 
-    protected async extractUserInfo(data: any): Promise<TypeUserInfo> {//извлечение информации о пользователе из данных ответа
+    protected async extractUserInfo(data: any): Promise<TypeUserInfo> {
         return {
             ...data,
             provider: this.options.name
@@ -79,8 +79,8 @@ export class BaseOAuthService {
                 `Не удалось получить пользователся с ${this.options.profile_url}. Проверьте правильность токена доступа.`
             )
         }
-        const user = await userRequest.json();//парсим ответ в json
-        const userData = await this.extractUserInfo(user);//извлекаем инфу о пользователе
+        const user = await userRequest.json();
+        const userData = await this.extractUserInfo(user);
         console.log("UserData" , userData)
         return {
             ...userData,

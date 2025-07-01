@@ -1,4 +1,4 @@
-//декоратор для получения текущего юзера из реквеста
+
 
 import {createParamDecorator, ExecutionContext} from "@nestjs/common";
 import {User} from "@/entities/User";

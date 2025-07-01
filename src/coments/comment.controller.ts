@@ -10,14 +10,14 @@ import {
 } from '@nestjs/common';
 import { CommentService } from './comment.service';
 import { CreateCommentDto } from './dto/create-comment.dto';
-import { AuthGuard } from '@/auth/guards/auth.guard'; // 👈 твой guard, который проверяет сессию
+import { AuthGuard } from '@/auth/guards/auth.guard';
 import { Request } from 'express';
 
-@Controller('posts/:postId/comments') // 👈 все маршруты начинаются с posts/ID/comments
+@Controller('posts/:postId/comments')
 export class CommentController {
     constructor(private readonly commentService: CommentService) {}
 
-    // 🔐 Создание комментария (доступно только авторизованным)
+
     @Post()
     @UseGuards(AuthGuard)
     async create(
@@ -33,13 +33,13 @@ export class CommentController {
 
 
 
-    // 📖 Получение всех комментариев к посту
+
     @Get()
     async findAll(@Param('postId') postId: number) {
-        return this.commentService.findAll(+postId); // 👈 просто отдаем все комменты к посту
+        return this.commentService.findAll(+postId);
     }
 
-    // 🗑 Удаление комментария (доступно только владельцу)
+
     @UseGuards(AuthGuard)
     @Delete(':commentId')
     async delete(

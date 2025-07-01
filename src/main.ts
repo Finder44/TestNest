@@ -1,5 +1,3 @@
-//настройка куки вроде как закончена
-//npm run start:dev
 import {NestFactory} from '@nestjs/core';
 import {AppModule} from './app.module';
 import {ConfigService} from '@nestjs/config';
@@ -15,15 +13,15 @@ async function bootstrap() {
     const app = await NestFactory.create(AppModule);
 
     const config = app.get(ConfigService);
-    const redis = new IORedis(config.getOrThrow('REDIS_URI'));// Настраиваем Redis-клиент
+    const redis = new IORedis(config.getOrThrow('REDIS_URI'));
 
-    app.use(cookieParser(config.getOrThrow<string>('COOKIES_SECRET')));//Cookie parser
+    app.use(cookieParser(config.getOrThrow<string>('COOKIES_SECRET')));
 
     app.useGlobalPipes(
         new ValidationPipe({
             transform: true,
-            whitelist: true, // Автоматически удаляет поля, которых нет в DTO
-            forbidNonWhitelisted: true, // Выбрасывает ошибку, если лишние поля
+            whitelist: true,
+            forbidNonWhitelisted: true,
         })
     );
 
@@ -31,8 +29,8 @@ async function bootstrap() {
         session({
             secret: config.getOrThrow<string>('SESSION_SECRET'),
             name: config.getOrThrow<string>('SESSION_NAME'),
-            resave: true,//нужно ли сохранять сессию даже если она небыла изменена (указал нужно)
-            saveUninitialized: false, //нужно ли сохранять не инициализированные сессии
+            resave: true,
+            saveUninitialized: false,
             cookie: {
                 domain: config.getOrThrow<string>('SESSION_DOMAIN'),
                 maxAge: ms(config.getOrThrow<StringValue>('SESSION_MAX_AGE')),
@@ -42,7 +40,7 @@ async function bootstrap() {
             },
             store: new RedisStore({
                 client: redis,
-                prefix: config.getOrThrow<string>('SESSION_FOLDER')//префикс для ключей сессий в редис SESSION_FOLDER папка для хранения сессий
+                prefix: config.getOrThrow<string>('SESSION_FOLDER')
             })
         })
     )
