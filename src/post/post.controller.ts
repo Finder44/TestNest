@@ -5,7 +5,7 @@ import {
 import { PostService } from './post.service';
 import { CreatePostDto } from './dto/create-post.dto';
 import { UpdatePostDto } from './dto/update-post.dto';
-import { AuthGuard } from 'src/auth/guards/auth.guard';
+import { AuthGuard } from '@/auth/guards/auth.guard';
 import { Request } from 'express';
 import {CurrentUser} from "@/post/decorators/current-user.decorator";
 import {User} from "@/entities/User";
