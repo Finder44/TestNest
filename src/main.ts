@@ -22,8 +22,8 @@ async function bootstrap() {
     app.useGlobalPipes(
         new ValidationPipe({
             transform: true,
-            whitelist: true, // Автоматически удаляет поля, которых нет в DTO
-            forbidNonWhitelisted: true, // Выбрасывает ошибку, если лишние поля
+            whitelist: true,
+            forbidNonWhitelisted: true,
         })
     );
 
@@ -31,8 +31,8 @@ async function bootstrap() {
         session({
             secret: config.getOrThrow<string>('SESSION_SECRET'),
             name: config.getOrThrow<string>('SESSION_NAME'),
-            resave: true,//нужно ли сохранять сессию даже если она небыла изменена (указал нужно)
-            saveUninitialized: false, //нужно ли сохранять не инициализированные сессии
+            resave: true,
+            saveUninitialized: false,
             cookie: {
                 domain: config.getOrThrow<string>('SESSION_DOMAIN'),
                 maxAge: ms(config.getOrThrow<StringValue>('SESSION_MAX_AGE')),
@@ -42,7 +42,7 @@ async function bootstrap() {
             },
             store: new RedisStore({
                 client: redis,
-                prefix: config.getOrThrow<string>('SESSION_FOLDER')//префикс для ключей сессий в редис SESSION_FOLDER папка для хранения сессий
+                prefix: config.getOrThrow<string>('SESSION_FOLDER')
             })
         })
     )
