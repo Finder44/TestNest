@@ -8,7 +8,7 @@ import {
     OneToMany
 } from 'typeorm';
 import { User } from './User';
-import { Comment} from "@/entities/Coment";
+import { Comment} from "@/entities/Comment";
 
 @Entity()
 export class Post {

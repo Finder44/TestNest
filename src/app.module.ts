@@ -12,7 +12,7 @@ import {UserModule} from './user/user.module';
 import { ProviderModule } from '@/auth/provider/provider.module';
 import {Post} from "@/entities/Post";
 import {PostModule} from "@/post/post.module";
-import {Comment} from "@/entities/Coment";
+import {Comment} from "@/entities/Comment";
 import {CommentModule} from "@/coments/comment.module";
 
 @Module({

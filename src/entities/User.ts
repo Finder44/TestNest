@@ -9,7 +9,7 @@ import {
 import { Post } from './Post';
 import { Account } from './Account';
 import { UserRole, AuthMethod } from './enums';
-import {Comment} from "@/entities/Coment";
+import {Comment} from "@/entities/Comment";
 
 
 @Entity({ name: 'users' })
